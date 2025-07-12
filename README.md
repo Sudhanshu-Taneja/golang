@@ -33,3 +33,6 @@ The defer keyword is a fairly unique feature of Go. It allows a function to be e
 
 Deferred functions are typically used to clean up resources that are no longer being used. Often to close database connections, file handlers and the like.
 
+# Closure
+
+A closure is a function that references variables from outside its own function body. The function may access and assign to the referenced variables.

@@ -5,7 +5,8 @@ import (
 	"math"
 )
 
-func calc(x, y int) (int, int, int) { // The type of variables can declared together in synchronized manner.
+func calc(x, y int) (int, int, int) {
+	// The type of variables can declared together in synchronized manner.
 	// This function takes two integers x and y, adds them, and returns the result.
 	return (x + y), (x - y), (x * y) // Return the sum and difference of x and y.
 }
@@ -23,7 +24,8 @@ type Wheel struct {
 }
 
 // Methods in structs
-func (w Wheel) getArea() int { // Method to get the area of the wheel.
+func (w Wheel) getArea() int {
+	// Method to get the area of the wheel.
 	return int(math.Pi * w.Radius * w.Radius) // Return the radius of the wheel.
 }
 
@@ -61,6 +63,15 @@ func GetUsername(dstName, srcName string) (username string, err error) {
 	return username, nil
 }
 
+// Closure function
+func findSum() func(int) int {
+	sum := 0
+	return func(num int) int {
+		sum += num
+		return sum
+	}
+}
+
 func main() {
 
 	// Print a string to the console.
@@ -82,4 +93,9 @@ func main() {
 	fmt.Println("Frontwheel Radius:", mycar.Radius) // Print the radius of the car.
 
 	fmt.Println("Area of wheel: ", mycar.getArea()) // Print the area of the wheel using the getArea method.
+
+	sum := findSum()
+	fmt.Println(sum(5))  // Call the closure function with argument 5 and print the result.
+	fmt.Println(sum(10)) // Call the closure function with argument 10 and print the result.
+
 }
