@@ -6,10 +6,29 @@ It is a grabage collected language and thus, it has automated memory management 
 
 In terms of execution speed, go is faster than JS, python, ruby & php. In terms of compilation speed, it's faster than rust, C, C++, java & C#.
 
-Types of variables - 
+# Types of variables - 
 1. String
 2. Boolean
 3. Integer - Whole numbers
 4. Unsigned integer - Only positive numbers
 5. Float
 6. Complex
+
+# Functions
+
+A function is a block of statements that can be used repeatedly in a program. It will not execute automatically when a page loads. It will be executed by a call to the function.
+
+Create a Function - To create (often referred to as declare) a function, do the following:
+
+1. Use the func keyword.
+2. Specify a name for the function, followed by parentheses () where you can define the variables that the funciton takes as input and their types.
+3. Finally, add code that defines what the function should do, inside curly braces {}.
+
+Call a Function
+Functions are not executed immediately. They are "saved for later use", and will be executed when they are called.
+
+# Defer 
+
+The defer keyword is a fairly unique feature of Go. It allows a function to be executed automatically just before its enclosing function returns. The deferred call's arguments are evaluated immediately, but the function call is not executed until the surrounding function returns.
+
+Deferred functions are typically used to clean up resources that are no longer being used. Often to close database connections, file handlers and the like.

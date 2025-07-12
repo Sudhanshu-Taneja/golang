@@ -27,6 +27,40 @@ func (w Wheel) getArea() int { // Method to get the area of the wheel.
 	return int(math.Pi * w.Radius * w.Radius) // Return the radius of the wheel.
 }
 
+// Mock db struct and methods
+type db struct{}
+
+func (d *db) Open(name string) (*db, error) {
+	// Simulate opening a database connection
+	return &db{}, nil
+}
+
+func (d *db) FetchUser() (string, error) {
+	// Simulate fetching a username
+	return "mock_username", nil
+}
+
+// Update GetUsername function to use the mock db
+func GetUsername(dstName, srcName string) (username string, err error) {
+	// Create a new db instance
+	conn, _ := (&db{}).Open(srcName)
+
+	// Close the connection *anywhere* the GetUsername function returns
+	defer func() {
+		// Simulate closing the connection
+		fmt.Println("Connection closed")
+	}()
+
+	username, err = conn.FetchUser()
+	if err != nil {
+		// The defer statement is auto-executed if we return here
+		return "", err
+	}
+
+	// The defer statement is auto-executed if we return here
+	return username, nil
+}
+
 func main() {
 
 	// Print a string to the console.
