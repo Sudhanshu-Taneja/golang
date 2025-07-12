@@ -32,3 +32,4 @@ Functions are not executed immediately. They are "saved for later use", and will
 The defer keyword is a fairly unique feature of Go. It allows a function to be executed automatically just before its enclosing function returns. The deferred call's arguments are evaluated immediately, but the function call is not executed until the surrounding function returns.
 
 Deferred functions are typically used to clean up resources that are no longer being used. Often to close database connections, file handlers and the like.
+
