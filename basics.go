@@ -72,6 +72,30 @@ func findSum() func(int) int {
 	}
 }
 
+// Interface
+type shape interface {
+	// Define an interface with a method to calculate area
+	area() float64
+	perimeter() float64
+}
+
+// Circle struct implementing the shape interface
+type Circle struct {
+	radius float64 // Field radius of type float64.
+}
+
+// Implementing the area method for Circle
+func (c Circle) area() float64 {
+	// Calculate the area of the circle
+	return math.Pi * c.radius * c.radius // Return the area of the circle.
+}
+
+// Implementing the perimeter method for Circle
+func (c Circle) perimeter() float64 {
+	// Calculate the perimeter of the circle
+	return 2 * math.Pi * c.radius // Return the perimeter of the circle.
+}
+
 func main() {
 
 	// Print a string to the console.

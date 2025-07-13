@@ -36,3 +36,11 @@ Deferred functions are typically used to clean up resources that are no longer b
 # Closure
 
 A closure is a function that references variables from outside its own function body. The function may access and assign to the referenced variables.
+
+# Structs
+
+Structs are used to represent structured data. It's often convenient to group different types of variables together. 
+
+# Interface
+
+Interfaces are just collections of method signatures. A type "implements" an interface if it has methods that match the interface's method signatures. In our example, we've constructed a shape interface with 2 functions, area & perimeter. Now, any object that supports these 2 functions is an interface of "shape".
