@@ -112,9 +112,10 @@ func main() {
 			Material: "Rubber ", // Assign the Material field of Frontwheel to "Rubber".
 		},
 	}
-	fmt.Println("Car details:")                     // Print a header for car details.
-	fmt.Println("Brand:", mycar.brand)              // Print the brand of the car.
-	fmt.Println("Frontwheel Radius:", mycar.Radius) // Print the radius of the car.
+	fmt.Println("Car details:")                             // Print a header for car details.
+	fmt.Println("Brand:", mycar.brand)                      // Print the brand of the car.
+	s := fmt.Sprintf("Frontwheel Radius: %v", mycar.Radius) // Print the radius of the car.
+	fmt.Println(s)                                          // Print the formatted string containing the radius of the front wheel.
 
 	fmt.Println("Area of wheel: ", mycar.getArea()) // Print the area of the wheel using the getArea method.
 
