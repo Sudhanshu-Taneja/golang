@@ -144,4 +144,9 @@ func main() {
 		fmt.Println(err)
 	}
 
+	// Creating loops
+	for i := 0; i < 5; i++ { // Loop from 0 to 4.
+		fmt.Println("Loop iteration:", i) // Print the current iteration.
+	}
+
 }
