@@ -44,3 +44,16 @@ Structs are used to represent structured data. It's often convenient to group di
 # Interface
 
 Interfaces are just collections of method signatures. A type "implements" an interface if it has methods that match the interface's method signatures. In our example, we've constructed a shape interface with 2 functions, area & perimeter. Now, any object that supports these 2 functions is an interface of "shape".
+
+Type assertions - In GO, you can cast an interface to its underlying type using a type assertion.
+
+Difference between an interface & classes - 
+
+1. Interface don't have constructors or destructors that require that data is created or destroyed.
+2. Interfaces aren't hierarchial by nature.
+3. Interfaces define function signatures, but no underlying behaviour.
+
+
+# Error handling
+
+Error in GO is just an error interface which just has a function that returns a string.

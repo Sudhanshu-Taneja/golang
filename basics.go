@@ -108,8 +108,8 @@ func main() {
 		model: "Corolla", // Assign the model field to "Corolla".
 		year:  2020,      // Assign the year field to 2020.
 		Wheel: Wheel{ // Assign the Frontwheel field to a new Wheel instance.
-			Radius:   15,       // Assign the Radius field of Frontwheel to 15.
-			Material: "Rubber", // Assign the Material field of Frontwheel to "Rubber".
+			Radius:   15,        // Assign the Radius field of Frontwheel to 15.
+			Material: "Rubber ", // Assign the Material field of Frontwheel to "Rubber".
 		},
 	}
 	fmt.Println("Car details:")                     // Print a header for car details.
@@ -121,5 +121,19 @@ func main() {
 	sum := findSum()
 	fmt.Println(sum(5))  // Call the closure function with argument 5 and print the result.
 	fmt.Println(sum(10)) // Call the closure function with argument 10 and print the result.
+
+	//c, ok := s.(Circle) // Type assertion to check if s is of type Circle.
+	/*
+		"c" is a new circle cast from "s" which is of type "shape".
+		"ok" is a boolean indicating whether the assertion was successful. If ok is true, then c is a Circle.
+	*/
+
+	// Error handling
+	newSum, err := findSum(), error(nil) // Initialize newSum with the closure function and err with nil.
+	if err != nil {
+		fmt.Println("Error occurred:", err) // If there is an error, print it.
+		return
+	}
+	fmt.Println("New sum is:", newSum(15)) // Print the result of the closure function with argument 15.
 
 }
