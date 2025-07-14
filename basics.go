@@ -1,6 +1,7 @@
 package main // Package decoration which builds the file into executable go program.
 
 import (
+	"errors"
 	"fmt" // Importing fmt package from standard library in order to use it.
 	"math"
 )
@@ -136,5 +137,11 @@ func main() {
 		return
 	}
 	fmt.Println("New sum is:", newSum(15)) // Print the result of the closure function with argument 15.
+
+	// Creating dynamic error as per the code
+	if newSum(0) == 15 {
+		var err error = errors.New("Your sum value has reached 15. Testing new error creation.")
+		fmt.Println(err)
+	}
 
 }
