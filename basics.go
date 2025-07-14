@@ -145,8 +145,30 @@ func main() {
 	}
 
 	// Creating loops
-	for i := 0; i < 5; i++ { // Loop from 0 to 4.
+	for i := 0; ; i++ { // Loop from 0 to 4.
 		fmt.Println("Loop iteration:", i) // Print the current iteration.
+		if i == 4 {                       // If the iteration reaches 4, break the loop.
+			fmt.Println("Breaking the loop at iteration:", i) // Print a message indicating the loop is breaking.
+			break                                             // Break the loop.
+		}
+	}
+	j := 5
+	for j > 0 {
+		fmt.Println("Loop iteration:", j) // Print the current iteration.
+		j--                               // Decrement j by 1.
+	}
+
+	// Testing modulo operator and logical AND operator
+	for i := 1; i <= 100; i++ {
+		if i%3 == 0 && i%5 == 0 {
+			fmt.Println("fizzbuzz")
+		} else if i%3 == 0 {
+			fmt.Println("fiz")
+		} else if i%5 == 0 {
+			fmt.Println("buzz")
+		} else {
+			fmt.Println(i)
+		}
 	}
 
 }

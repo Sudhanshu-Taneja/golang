@@ -57,3 +57,11 @@ Difference between an interface & classes -
 # Error handling
 
 Error in GO is just an error interface which just has a function that returns a string.
+
+# Continue keyword 
+
+It stops the current iteration of a loop and continues to the next iteration.
+
+# Break keyword
+
+It stops the current iteration of a loop and exits the loop.
