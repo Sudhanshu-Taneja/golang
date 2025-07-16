@@ -178,4 +178,10 @@ func main() {
 		fmt.Printf("Element at index %d: %d\n", i, v) // Print the index and value of each element in the array.
 	}
 
+	// Slices
+	slice := arr[1:4]              // Declare a slice of integers with 5 elements.
+	fmt.Println("Slice elements:") // Print a header for slice elements.
+	for i, v := range slice {      // Iterate over the slice using range.
+		fmt.Printf("Element at index %d: %d\n", i, v) // Print the index and value of each element in the slice.
+	}
 }

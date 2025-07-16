@@ -69,3 +69,7 @@ It stops the current iteration of a loop and exits the loop.
 # Arrays
 
 Arrays are stored in square brackets same as python. But, unlike python, the size of arrays in go is fixed.
+
+# Slices
+
+A slice a dynamically sized, flexible view into an array.
