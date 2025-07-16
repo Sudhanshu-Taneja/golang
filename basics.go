@@ -171,4 +171,11 @@ func main() {
 		}
 	}
 
+	// Arrays
+	arr := [5]int{1, 2, 3, 4, 5}   // Declare an array of integers with 5 elements.
+	fmt.Println("Array elements:") // Print a header for array elements.
+	for i, v := range arr {        // Iterate over the array using range.
+		fmt.Printf("Element at index %d: %d\n", i, v) // Print the index and value of each element in the array.
+	}
+
 }
