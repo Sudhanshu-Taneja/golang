@@ -73,3 +73,7 @@ Arrays are stored in square brackets same as python. But, unlike python, the siz
 # Slices
 
 A slice a dynamically sized, flexible view into an array.
+
+# Variadic functions
+
+A variadic function is a function that accepts a variable number of arguments. This is achieved using an ellipsis (...) before the type of the parameter in the function signature.

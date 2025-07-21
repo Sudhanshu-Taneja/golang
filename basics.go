@@ -97,6 +97,15 @@ func (c Circle) perimeter() float64 {
 	return 2 * math.Pi * c.radius // Return the perimeter of the circle.
 }
 
+// Implementing variadic functions
+func getSum(nums ...int) int {
+	sum := 0
+	for i := 0; i < len(nums); i++ {
+		sum += nums[i]
+	}
+	return sum
+}
+
 func main() {
 
 	// Print a string to the console.
@@ -179,9 +188,17 @@ func main() {
 	}
 
 	// Slices
+	// func make([]T, len, cap)
 	slice := arr[1:4]              // Declare a slice of integers with 5 elements.
 	fmt.Println("Slice elements:") // Print a header for slice elements.
 	for i, v := range slice {      // Iterate over the slice using range.
 		fmt.Printf("Element at index %d: %d\n", i, v) // Print the index and value of each element in the slice.
 	}
+
+	sum1 := getSum(1, 2, 3)
+	fmt.Println("Sum of numbers: ", sum1)
+
+	sum2 := getSum(4, 7, 9, 11, 15, 19)
+	fmt.Println("Sum of numbers: ", sum2)
+
 }
