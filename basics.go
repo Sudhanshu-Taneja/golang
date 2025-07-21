@@ -201,4 +201,8 @@ func main() {
 	sum2 := getSum(4, 7, 9, 11, 15, 19)
 	fmt.Println("Sum of numbers: ", sum2)
 
+	// Implementing spread operator
+	sum3 := getSum([]int{1, 2, 3, 4, 5}...)                     // Using spread operator to pass a slice as variadic arguments.
+	fmt.Println("Sum of numbers using spread operator: ", sum3) // Print the result of the sum using the spread operator.
+
 }

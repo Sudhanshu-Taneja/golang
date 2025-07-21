@@ -72,8 +72,12 @@ Arrays are stored in square brackets same as python. But, unlike python, the siz
 
 # Slices
 
-A slice a dynamically sized, flexible view into an array.
+A slice a dynamically sized, flexible view into an array. We can use append function to dynamically add elements to a slice.
 
 # Variadic functions
 
 A variadic function is a function that accepts a variable number of arguments. This is achieved using an ellipsis (...) before the type of the parameter in the function signature.
+
+# Spread operator
+
+It allows us to pass a slice into a variadic function. It consists of 3 dots following the slice in the function call.
