@@ -106,6 +106,19 @@ func getSum(nums ...int) int {
 	return sum
 }
 
+func getAddition(a, b int) int {
+	return a + b // Return the sum of a and b.
+}
+
+func getProduct(a, b int) int {
+	return a * b // Return the product of a and b.
+}
+
+// Implementing higher-order functions
+func aggregate(a, b, c int, arithmetic func(int, int) int) int {
+	return arithmetic(arithmetic(a, b), c) // Apply the arithmetic function to a and b, then to the result and c.
+}
+
 func main() {
 
 	// Print a string to the console.
@@ -204,5 +217,30 @@ func main() {
 	// Implementing spread operator
 	sum3 := getSum([]int{1, 2, 3, 4, 5}...)                     // Using spread operator to pass a slice as variadic arguments.
 	fmt.Println("Sum of numbers using spread operator: ", sum3) // Print the result of the sum using the spread operator.
+
+	ages := map[string]int{ // Declare a map with string keys and int values.
+		"Alice": 30, // Key "Alice" with value 30.
+		"Bob":   25, // Key "Bob" with value 25.
+	}
+	ages["Charlie"] = 35          // Add a new key-value pair to the map.
+	fmt.Println("Ages map:")      // Print a header for the ages map.
+	for name, age := range ages { // Iterate over the map using range.
+		fmt.Printf("%s is %d years old\n", name, age) // Print the name and age of each person in the map.
+	}
+
+	delete(ages, "Bob")       // Delete the key "Bob" from the map.
+	elem, ok := ages["Alice"] // Check if the key "Alice" exists in the map.
+	if ok {
+		fmt.Println("Alice's age is:", elem) // Print Alice's age if the key exists.
+	} else {
+		fmt.Println("Alice not found in the map") // Print a message if the key does not exist.
+	}
+
+	// Using the aggregate function with addition and multiplication
+	sumResult := aggregate(1, 2, 3, getAddition)
+	fmt.Println("Sum result:", sumResult) // Print the result of the aggregation.
+
+	productResult := aggregate(1, 2, 3, getProduct)
+	fmt.Println("Product result:", productResult) // Print the result of the aggregation.
 
 }

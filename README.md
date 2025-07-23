@@ -81,3 +81,15 @@ A variadic function is a function that accepts a variable number of arguments. T
 # Spread operator
 
 It allows us to pass a slice into a variadic function. It consists of 3 dots following the slice in the function call.
+
+# Maps
+
+It is very similar to dictionaries in python. Maps in GO are used to store data in key-value pairs. Like slices, maps are also passed by reference into functions. This means that when a map is passed into a function we write, we can make changes to the original.
+
+# Higher order function
+
+A function is called higher order function if it fulfills one of the below conditions - 
+
+1. Passing function as an argument to another function - If a function is passed as an argument to another function, then such types of functions are known as higher-order function. It is also known as callback or first-class function.
+
+2. Returning function from another function - If a function returns another function, then such type of function is known as higher order function. It is also known as first class function.
