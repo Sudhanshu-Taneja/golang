@@ -93,3 +93,15 @@ A function is called higher order function if it fulfills one of the below condi
 1. Passing function as an argument to another function - If a function is passed as an argument to another function, then such types of functions are known as higher-order function. It is also known as callback or first-class function.
 
 2. Returning function from another function - If a function returns another function, then such type of function is known as higher order function. It is also known as first class function.
+
+# Defer
+
+It allows a function to be executed automatically just before its enclosing function returns. The deferred functions are typically used as cleaning functions performing tasks like closing database connections, file handlers etc.
+
+# Closures
+
+It is a function that references variables from outside its own function body. The function may access and assign to the referenced variables.
+
+# Pointers
+
+It is a variable that is used to store the memory address of another variable. 

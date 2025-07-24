@@ -3,7 +3,9 @@ package main // Package decoration which builds the file into executable go prog
 import (
 	"errors"
 	"fmt" // Importing fmt package from standard library in order to use it.
+	"io"
 	"math"
+	"os"
 )
 
 func calc(x, y int) (int, int, int) {
@@ -117,6 +119,28 @@ func getProduct(a, b int) int {
 // Implementing higher-order functions
 func aggregate(a, b, c int, arithmetic func(int, int) int) int {
 	return arithmetic(arithmetic(a, b), c) // Apply the arithmetic function to a and b, then to the result and c.
+}
+
+// Implementing defer function
+func copyFile(srcFile, dstFile string) (written int64, err error) {
+
+	src, err := os.Open(srcFile) // Open the source file.
+	if err != nil {
+		return 0, err // Return 0 and the error if opening the file fails.
+	}
+	defer src.Close() // Ensure the source file is closed when the function returns.
+
+	dst, err := os.Create(dstFile) // Create the destination file.
+	if err != nil {
+		return 0, err // Return 0 and the error if creating the file fails.
+	}
+	defer dst.Close() // Ensure the destination file is closed when the function returns.
+
+	written, err = io.Copy(dst, src) // Copy the contents from source to destination.
+	if err != nil {
+		return 0, err // Return 0 and the error if copying fails.
+	}
+	return written, nil // Return the number of bytes written and no error.
 }
 
 func main() {
@@ -242,5 +266,12 @@ func main() {
 
 	productResult := aggregate(1, 2, 3, getProduct)
 	fmt.Println("Product result:", productResult) // Print the result of the aggregation.
+
+	out, err := copyFile("basics.go", "basics_copy.go") // Call the copyFile function to copy the contents of basics.go to basics_copy.go.
+	if err != nil {
+		fmt.Println("Error copying file:", err) // Print an error message if the file copy fails.
+		return                                  // Exit the program if there is an error.
+	}
+	fmt.Printf("Copied %d bytes from basics.go to basics_copy.go\n", out) // Print the number of bytes copied from the source file to the destination file.
 
 }
