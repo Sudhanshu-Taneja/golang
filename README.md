@@ -104,4 +104,6 @@ It is a function that references variables from outside its own function body. T
 
 # Pointers
 
-It is a variable that is used to store the memory address of another variable. 
+It is a variable that is used to store the memory address of another variable. The "&" is used to reference a variable to a pointer while "*" is used to de-reference a pointer and fetch it's value.
+
+If a pointer points to nothing, then dereferencing it will cause a run-time error.
