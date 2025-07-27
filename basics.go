@@ -153,6 +153,33 @@ func testingGo(msg string) {
 	time.Sleep(500 * time.Millisecond)
 }
 
+// Function to demonstrate concurrent execution of addition, subtraction, and multiplication.
+// This function takes two integers a and b, performs addition, subtraction, and multiplication concurrently,
+// and prints the results of each operation.
+// It uses a channel to receive the results of the operations.
+// The function is defined as newCalc to avoid confusion with the calc function defined earlier.
+func newCalc(a, b int) {
+
+	getOutput := make(chan int) // Create a channel to receive the output of the addition.
+
+	go func() {
+		add := a + b
+		sub := a - b
+		mul := a * b
+		getOutput <- add // Assign the result of addition to getOutput.
+		getOutput <- sub // Assign the result of subtraction to getOutput.
+		getOutput <- mul // Assign the result of multiplication to getOutput.
+
+	}()
+
+	addResult := <-getOutput
+	subResult := <-getOutput
+	mulResult := <-getOutput
+	fmt.Println("Addition result:", addResult)       // Print the result of addition.
+	fmt.Println("Subtraction result:", subResult)    // Print the result of subtraction.
+	fmt.Println("Multiplication result:", mulResult) // Print the result of multiplication.
+}
+
 func main() {
 
 	// Print a string to the console.
@@ -294,4 +321,6 @@ func main() {
 
 	// Using go function to run a function concurrently
 	testingGo("Hello, Go!") // Call the testingGo function with a message to run it concurrently.
+
+	newCalc(10, 20) // Call the newCalc function with arguments 10 and 20 to demonstrate concurrent execution.
 }

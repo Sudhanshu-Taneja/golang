@@ -113,3 +113,9 @@ If a pointer points to nothing, then dereferencing it will cause a run-time erro
 It is the ability to perform multiple tasks at the same time. Typically, the code is executed one line at a time, one after the other. This is called sequential execution or synchronous execution.
 
 If the computer we're running our code on has multiple cores, we can even execute multiple tasks at exactly the same time. Go was designed to be concurrent & it excels at performing many tasks simultaneously safely using the "go" keyword when calling a function. But, we can't capture any return statements while using this function.
+
+# Channels
+
+Channels are a typed, thread-safe queue. It allows different go-routines to communicate with each other. You can send and receive data from a channel using "<-" operator. These operations are blocking operations, which means if the channel is trying to send an output but there's no go routine to fetch that data, then the execution will stop until the channel finds a routine to send the output.
+
+Blocking and deadlock - A deadlock is when a group of go-routines are all blocking so none of them can continue.
