@@ -6,6 +6,7 @@ import (
 	"io"
 	"math"
 	"os"
+	"time"
 )
 
 func calc(x, y int) (int, int, int) {
@@ -143,6 +144,15 @@ func copyFile(srcFile, dstFile string) (written int64, err error) {
 	return written, nil // Return the number of bytes written and no error.
 }
 
+func testingGo(msg string) {
+	go func() {
+		time.Sleep(250 * time.Millisecond)     // Sleep for 250 milliseconds to simulate a delay.
+		fmt.Println("Message received: ", msg) // Print a message indicating that this function is running concurrently.
+	}()
+	fmt.Println("Main function continues to run") // Print a message indicating that the main function continues to run after starting the concurrent function.
+	time.Sleep(500 * time.Millisecond)
+}
+
 func main() {
 
 	// Print a string to the console.
@@ -267,12 +277,12 @@ func main() {
 	productResult := aggregate(1, 2, 3, getProduct)
 	fmt.Println("Product result:", productResult) // Print the result of the aggregation.
 
-	out, err := copyFile("basics.go", "basics_copy.go") // Call the copyFile function to copy the contents of basics.go to basics_copy.go.
-	if err != nil {
-		fmt.Println("Error copying file:", err) // Print an error message if the file copy fails.
-		return                                  // Exit the program if there is an error.
-	}
-	fmt.Printf("Copied %d bytes from basics.go to basics_copy.go\n", out) // Print the number of bytes copied from the source file to the destination file.
+	// out, err := copyFile("basics.go", "basics_copy.go") // Call the copyFile function to copy the contents of basics.go to basics_copy.go.
+	// if err != nil {
+	// 	fmt.Println("Error copying file:", err) // Print an error message if the file copy fails.
+	// 	return                                  // Exit the program if there is an error.
+	// }
+	// fmt.Printf("Copied %d bytes from basics.go to basics_copy.go\n", out) // Print the number of bytes copied from the source file to the destination file.
 
 	// Implementing pointers
 	var a int = 42                             // Declare an integer variable a with value 42.
@@ -280,5 +290,8 @@ func main() {
 	fmt.Println("Value of a:", a)              // Print the value of a.
 	fmt.Println("Address of a:", &a)           // Print the memory address of a.
 	fmt.Println("Value of ptr:", *ptr)         // Print the value pointed to by ptr (which is the value of a).
-	fmt.Println("Address stored in ptr:", ptr) // Print the
+	fmt.Println("Address stored in ptr:", ptr) // Print the memory address stored in ptr (which is the address of a).
+
+	// Using go function to run a function concurrently
+	testingGo("Hello, Go!") // Call the testingGo function with a message to run it concurrently.
 }

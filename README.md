@@ -107,3 +107,9 @@ It is a function that references variables from outside its own function body. T
 It is a variable that is used to store the memory address of another variable. The "&" is used to reference a variable to a pointer while "*" is used to de-reference a pointer and fetch it's value.
 
 If a pointer points to nothing, then dereferencing it will cause a run-time error.
+
+# Concurrency
+
+It is the ability to perform multiple tasks at the same time. Typically, the code is executed one line at a time, one after the other. This is called sequential execution or synchronous execution.
+
+If the computer we're running our code on has multiple cores, we can even execute multiple tasks at exactly the same time. Go was designed to be concurrent & it excels at performing many tasks simultaneously safely using the "go" keyword when calling a function. But, we can't capture any return statements while using this function.
