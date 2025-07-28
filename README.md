@@ -119,3 +119,31 @@ If the computer we're running our code on has multiple cores, we can even execut
 Channels are a typed, thread-safe queue. It allows different go-routines to communicate with each other. You can send and receive data from a channel using "<-" operator. These operations are blocking operations, which means if the channel is trying to send an output but there's no go routine to fetch that data, then the execution will stop until the channel finds a routine to send the output.
 
 Blocking and deadlock - A deadlock is when a group of go-routines are all blocking so none of them can continue.
+
+Channels in go can be explicitly closed by a sender indicating that we're done using the channel.
+
+# Buffered channels 
+
+By default, channels will only accept sends if there's a corresponding receive which are ready to receive the sent value. Buffered channels allows to accept a limited number of values without a corresponding reciever for those values. Buffered channel is blocked only when the buffer is full. Similarly, receiving from buffered channel is blocked only when the buffer will be empty.
+
+# Select
+
+It is used to listen to multiple channels at the same time. It is similar to switch statement but for channels.
+
+# Mutexes
+
+It allows us to lock access to data. This ensures that we can control which go-routine can access certain data at which time.
+
+The best use-case of mutex is maps, as they are not safe for concurrent use. If we've multiple go-routines accessing the same map, and at least one of them is writing to the map, we should lock the maps with a mutex.
+
+# R/W Mutex
+
+Maps are safe for concurrent read access, just not concurrent read/write or write/write access. A read/write mutex allows all the readers to access the map at the same time, but a write will still lock out all other readers and writers.
+
+# Generics
+
+Generics allows the users to use variables to refer to specific types. It allows to write abstract functions that drastically reduce code duplication. It can be used in libraries and packages and thus, the code can be directly imported to be used in many appliactions.
+
+# Constraints
+
+A constraint means a type contraint, it is used to contrain some type parameters. We could view contraints as types of types. It allows us to use generics but for a subset of types. 

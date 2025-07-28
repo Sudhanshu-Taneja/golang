@@ -180,6 +180,48 @@ func newCalc(a, b int) {
 	fmt.Println("Multiplication result:", mulResult) // Print the result of multiplication.
 }
 
+// Implementing buffered channels
+func bufferedChannelExample(a, b int) {
+	getOutput := make(chan int, 3) // Create a channel to receive the output of the addition.
+
+	go func() {
+		add := a + b
+		sub := a - b
+		mul := a * b
+		getOutput <- add // Assign the result of addition to getOutput.
+		getOutput <- sub // Assign the result of subtraction to getOutput.
+		getOutput <- mul // Assign the result of multiplication to getOutput.
+
+	}()
+
+	for i := 0; i < 3; i++ {
+		result := <-getOutput // Receive the result from the channel.
+		switch i {
+		case 0:
+			fmt.Println("Addition result:", result) // Print the result of addition.
+		case 1:
+			fmt.Println("Subtraction result:", result) // Print the result of subtraction.
+		case 2:
+			fmt.Println("Multiplication result:", result) // Print the result of multiplication.
+		}
+	}
+	close(getOutput)       // Close the channel to indicate that no more values will be sent.
+	out, ok := <-getOutput // Attempt to receive from the channel again.
+	if !ok {
+		fmt.Println("Channel closed, no more values to receive") // Print a message indicating that the channel is closed.
+	} else {
+		fmt.Println("Received value from channel:", out) // Print the received value if the channel is still open.
+	}
+}
+
+// Implementing generics
+func splitAnySlice[T any](s []T) ([]T, []T) {
+	mid := len(s) / 2 // Calculate the midpoint of the slice.
+
+	return s[:mid], s[mid:] // Return two slices: one from the start to the midpoint, and another from the midpoint to the end.
+
+}
+
 func main() {
 
 	// Print a string to the console.
@@ -323,4 +365,14 @@ func main() {
 	testingGo("Hello, Go!") // Call the testingGo function with a message to run it concurrently.
 
 	newCalc(10, 20) // Call the newCalc function with arguments 10 and 20 to demonstrate concurrent execution.
+
+	bufferedChannelExample(5, 10) // Call the bufferedChannelExample function with arguments 5 and 10 to demonstrate buffered channels.
+
+	// Demonstrating generics with splitAnySlice function
+	intSlice := []int{1, 2, 3, 4, 5}                        // Declare a slice of integers.
+	strSlice := []string{"a", "b", "c", "d", "e"}           // Declare a slice of strings.
+	intPart1, intPart2 := splitAnySlice(intSlice)           // Split the integer slice.
+	fmt.Println("Integer slice split:", intPart1, intPart2) // Print the two parts of the split integer slice.
+	strPart1, strPart2 := splitAnySlice(strSlice)           // Split the string slice.
+	fmt.Println("String slice split:", strPart1, strPart2)  // Print the two parts of the split string slice.
 }
