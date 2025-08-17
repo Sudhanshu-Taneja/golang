@@ -38,3 +38,13 @@ func (apiCfg *apiConfig) handlerCreateFeed(w http.ResponseWriter, r *http.Reques
 
 	jsonResponse(w, 200, databaseFeedToFeed(feed))
 }
+
+func (apiCfg *apiConfig) handlerGetFeeds(w http.ResponseWriter, r *http.Request) {
+	feeds, err := apiCfg.DB.GetFeeds(r.Context())
+	if err != nil {
+		errorResponse(w, 500, fmt.Sprintf("Error fetching feeds: %v", err))
+		return
+	}
+
+	jsonResponse(w, 200, databaseFeedsToFeeds(feeds))
+}
